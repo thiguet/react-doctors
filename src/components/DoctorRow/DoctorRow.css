@@ -1,0 +1,7 @@
+tr.available td {
+    color: #00a104;
+}
+
+tr.unavailable td {
+    color: #d82a0b;
+}
