@@ -7,7 +7,6 @@ module.exports = {
     target: 'web',
     mode: 'development',
     entry: path.resolve(__dirname, './src/index.ts'),
-    plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin()],
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     },
@@ -19,7 +18,7 @@ module.exports = {
                 use: ['babel-loader'],
             },
             {
-                test: /\.css$/i,
+                test: /\.(css)$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
@@ -33,7 +32,7 @@ module.exports = {
         publicPath: '/',
         filename: 'bundle.js',
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
+    plugins: [new webpack.HotModuleReplacementPlugin(), new HtmlWebpackPlugin(), new MiniCssExtractPlugin()],
     devServer: {
         contentBase: path.resolve(__dirname, './dist'),
         hot: true,
