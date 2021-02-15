@@ -7,7 +7,7 @@ const getAvailabilityClass = (isAvailable: Boolean) => (isAvailable ? 'available
 const getAvailabilityText = (isAvailable: Boolean) =>
     isAvailable ? AvailabilityText['Mark as Available'] : AvailabilityText['Mark as Unavailable'];
 
-export const DoctorsRow: React.FC<Doctor> = ({ id, name, zipCode, cityName, isAvailable }) => (
+const DoctorRow: React.FC<Doctor> = ({ id, name, zipCode, cityName, isAvailable }) => (
     <tr className={getAvailabilityClass(isAvailable)} data-upin={id}>
         <td>{name}</td>
         <td>{zipCode}</td>
@@ -20,18 +20,4 @@ export const DoctorsRow: React.FC<Doctor> = ({ id, name, zipCode, cityName, isAv
     </tr>
 );
 
-interface DoctorsRowsProps {
-    rows: Doctor[];
-}
-
-export const DoctorsRows: React.FC<DoctorsRowsProps> = ({ rows }) => {
-    return (
-        <>
-            {rows.map((row, index) => (
-                <DoctorsRow key={index} {...row} />
-            ))}
-        </>
-    );
-};
-
-export default DoctorsRows;
+export default DoctorRow;

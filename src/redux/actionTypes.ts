@@ -1,0 +1,2 @@
+export const UPDATE_DOCTORS = 'UPDATE_DOCTORS';
+export const UPDATE_FILTER = 'UPDATE_FILTER';

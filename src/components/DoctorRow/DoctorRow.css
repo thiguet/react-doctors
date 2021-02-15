@@ -6,12 +6,12 @@ tr.unavailable td {
     color: #00a104;
 }
 
-button.button-outline.available {
+button.button.button-outline.available {
     color: #d82a0b;
     border-color: #d82a0b;
 }
 
-button.button-outline.unavailable {
+button.button.button-outline.unavailable {
     color: #00a104;
     border-color: #00a104;
 }

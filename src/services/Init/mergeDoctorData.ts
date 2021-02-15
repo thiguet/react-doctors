@@ -1,20 +1,20 @@
-import { getData } from '../../DOMScanner/doctorsTable';
+import { getData as getDOMData } from '../DOMScanner/doctorsTable';
 import { DBDoctor, Doctor } from '../../types';
 import { getDoctors, updateDoctors } from '../doctorsAPI';
 
 export default async () => {
-    const DOMData = getData();
+    const DOMData = getDOMData();
 
-    const APIdata = await getDoctors();
+    const APIData = await getDoctors();
 
-    const doctors = mergeData(DOMData, APIdata);
+    const doctorsData = mergeData(DOMData, APIData);
 
-    return updateDoctors(doctors);
+    return updateDoctors(doctorsData);
 };
 
-const mergeData = (DOMdata: Doctor[], APIData: DBDoctor[]): DBDoctor[] => {
+const mergeData = (DOMData: Doctor[], APIData: DBDoctor[]): DBDoctor[] => {
     return APIData.map(API => {
-        const row = DOMdata.find(row => +row.id === API.upin);
+        const row = DOMData.find(row => +row.id === API.upin);
         const { id, isAvailable, ...rest } = row!;
 
         return {

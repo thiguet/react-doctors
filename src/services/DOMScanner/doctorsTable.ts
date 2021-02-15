@@ -1,4 +1,4 @@
-import { AvailabilityText, Doctor } from '../types';
+import { AvailabilityText, Doctor } from '../../types';
 
 export const getData = () =>
     [...document.querySelectorAll('tbody tr')].map(tr => {
