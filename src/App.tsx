@@ -9,7 +9,7 @@ import mergeDoctorData from "./services/Init/mergeDoctorData";
 
 import DoctorSelectFilter from "./components/DoctorSelectFilter/DoctorSelectFilter";
 import DoctorTextFilter from "./components/DoctorTextFilter/DoctorTextFilter";
-import DoctorRowsWithFilter from "./components/DoctorRow/DoctorRowsWithFilter";
+import DoctorRowsWithFilter from "./components/DoctorRowsWithFilter/DoctorRowsWithFilter";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== "production") {
     axe(React, ReactDOM, 1000);
 }
 
-// API conciliate -> Merge DOM and API data.
+// API conciliate -> Merge DOM and API data and save it to DB on the first run.
 if (localStorage.getItem("HAS_MERGED_DATA_BEFORE") !== "Y") {
     mergeDoctorData(); // This merge and persist the HTML Data to the DB.
     localStorage.setItem("HAS_MERGED_DATA_BEFORE", "Y");
