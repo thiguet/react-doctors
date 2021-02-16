@@ -1,26 +1,61 @@
-import React from 'react';
-import DoctorRow from './DoctorRow';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import DoctorRow from "./DoctorRow";
+import { State } from "../../redux/reducers/doctorsReducer";
+import { UPDATE_DOCTOR_AVAILABILITY } from "../../redux/actionTypes";
+import { getDoctors } from "../../services/doctorsAPI";
 
-import { useSelector } from 'react-redux';
-import { Doctor } from '../../types';
+const doctorsReducer = ({ doctorsReducer: state }: { doctorsReducer: State }) =>
+    (state.doctors || [])
+        .filter((row) => {
+            if (state.selectFilter === "Available Doctors") {
+                return row.isAvailable;
+            }
 
-const doctorsReducer = ({ doctorsReducer: state }: any) =>
-    ((state.doctors as Doctor[]) || []).filter(row => {
-        if (state.selectedFilter === 'Available Doctors') {
-            return row.isAvailable;
-        }
+            return true;
+        })
+        .filter((row) => {
+            const filter = state.textFilter.trim().toLowerCase();
+            if (filter) {
+                return (
+                    row.name.toLowerCase().includes(filter) ||
+                    `${row.id}`.toLowerCase().includes(filter)
+                );
+            }
 
-        return true;
-    });
+            return true;
+        });
 
 const DoctorRowsWithFilter: React.FC = () => {
     const doctors = useSelector(doctorsReducer);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        getDoctors().then((doctors) => {
+            dispatch({
+                type: "UPDATE_DOCTORS",
+                doctors: doctors.map((doc) => ({
+                    ...doc,
+                    id: doc.upin,
+                    isAvailable: doc.available,
+                })),
+            });
+        });
+    }, [dispatch]);
 
     return (
         <>
             {doctors.map((row, index) => (
-                //onUpdateAvailability={() => }
-                <DoctorRow key={index} {...row} />
+                <DoctorRow
+                    key={index}
+                    onUpdateAvailability={() => {
+                        dispatch({
+                            type: UPDATE_DOCTOR_AVAILABILITY,
+                            doctor: row,
+                        });
+                    }}
+                    {...row}
+                />
             ))}
         </>
     );
