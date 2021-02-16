@@ -1,19 +1,23 @@
+tr td {
+    transition: all 0.2s ease-in-out;
+}
+
 tr.available td {
-    color: #d82a0b;
+    color: #00a104;
 }
 
 tr.unavailable td {
-    color: #00a104;
+    color: #d82a0b;
 }
 
 button.button.button-outline.available {
-    color: #d82a0b;
-    border-color: #d82a0b;
+    color: #00a104;
+    border-color: #00a104;
 }
 
 button.button.button-outline.unavailable {
-    color: #00a104;
-    border-color: #00a104;
+    color: #d82a0b;
+    border-color: #d82a0b;
 }
 button.button.button-outline:focus,
 button.button.button-outline:hover {
