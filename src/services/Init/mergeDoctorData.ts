@@ -1,8 +1,8 @@
-import { getData as getDOMData } from '../DOMScanner/doctorsTable';
-import { DBDoctor, Doctor } from '../../types';
-import { getDoctors, updateDoctors } from '../doctorsAPI';
+import { getData as getDOMData } from "../DOMScanner/doctorsTable";
+import { DBDoctor, Doctor } from "../../types";
+import { getDoctors, updateDoctors } from "../doctorsAPI";
 
-export default async () => {
+export default async (): Promise<Promise<void>[]> => {
     const DOMData = getDOMData();
 
     const APIData = await getDoctors();
@@ -13,8 +13,8 @@ export default async () => {
 };
 
 const mergeData = (DOMData: Doctor[], APIData: DBDoctor[]): DBDoctor[] => {
-    return APIData.map(API => {
-        const row = DOMData.find(row => +row.id === API.upin);
+    return APIData.map((API) => {
+        const row = DOMData.find((row) => +row.id === API.upin);
         const { id, isAvailable, ...rest } = row!;
 
         return {
