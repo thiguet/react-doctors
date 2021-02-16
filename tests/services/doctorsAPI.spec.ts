@@ -1,11 +1,10 @@
-import { getFakeDoctor, getFakeDoctors } from "#/utils/doctorsFactory";
+import { getFakeDBDoctor, getFakeDBDoctors } from "#/utils/doctorsFactory";
 import * as doctorsAPI from "@/services/doctorsAPI";
-import { fake } from "faker";
 
 describe("Doctors API", () => {
     const build = () => {
-        const fakeDoctor = getFakeDoctor();
-        const fakeDoctors = getFakeDoctors();
+        const fakeDoctor = getFakeDBDoctor();
+        const fakeDoctors = getFakeDBDoctors();
 
         return {
             fakeDoctors,
