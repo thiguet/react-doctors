@@ -2,15 +2,17 @@ import React from "react";
 import { AvailabilityText, Doctor } from "../../types";
 import "./DoctorRow.css";
 
-const getAvailabilityClass = (isAvailable: boolean) =>
+export const getAvailabilityClass = (isAvailable: boolean) =>
     isAvailable ? "available" : "unavailable";
 
-const getAvailabilityText = (isAvailable: boolean) =>
+export const getAvailabilityText = (isAvailable: boolean) =>
     !isAvailable
         ? AvailabilityText["Mark as Available"]
         : AvailabilityText["Mark as Unavailable"];
 
-const DoctorRow: React.FC<Doctor & { onUpdateAvailability: () => unknown }> = ({
+export type DoctorRowProps = Doctor & { onUpdateAvailability: () => unknown };
+
+const DoctorRow: React.FC<DoctorRowProps> = ({
     id,
     name,
     zipCode,
