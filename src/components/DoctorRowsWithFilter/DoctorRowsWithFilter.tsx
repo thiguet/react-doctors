@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import DoctorRow from "./DoctorRow";
+import DoctorRow from "../DoctorRow/DoctorRow";
 import { State } from "../../redux/reducers/doctorsReducer";
 import { UPDATE_DOCTOR_AVAILABILITY } from "../../redux/actionTypes";
 import { getDoctors } from "../../services/doctorsAPI";
+import { Doctor } from "@/types";
 
-const doctorsReducer = ({ doctorsReducer: state }: { doctorsReducer: State }) =>
-    (state.doctors || [])
+export const doctorsReducer = ({
+    doctorsReducer: state,
+}: {
+    doctorsReducer: State;
+}): Doctor[] =>
+    state.doctors
         .filter((row) => {
             if (state.selectFilter === "Available Doctors") {
                 return row.isAvailable;
