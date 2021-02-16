@@ -5,7 +5,7 @@ import {
     UPDATE_TEXT_FILTER,
     UPDATE_DOCTOR_AVAILABILITY,
 } from "../actionTypes";
-import { updateDoctorsAvailability } from "../../services/doctorsAPI";
+import { updateDoctorAvailability } from "../../services/doctorsAPI";
 
 export type FilterOptions = "All Doctors" | "Available Doctors";
 
@@ -36,7 +36,7 @@ export default (state = initialState, action: Action): State => {
         case UPDATE_TEXT_FILTER:
             return { ...state, textFilter: action.filter };
         case UPDATE_DOCTOR_AVAILABILITY:
-            updateDoctorsAvailability(
+            updateDoctorAvailability(
                 action.doctor.id,
                 !action.doctor.isAvailable
             );
