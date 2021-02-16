@@ -1,16 +1,21 @@
 export interface Doctor {
-    id: Number;
-    name: String;
-    zipCode: Number;
-    cityName: String;
-    isAvailable: Boolean;
+    id: number;
+    name: string;
+    zipCode: number;
+    cityName: string;
+    isAvailable: boolean;
 }
 
 export enum AvailabilityText {
-    'Mark as Available' = 'Mark as Available',
-    'Mark as Unavailable' = 'Mark as Unavailable',
+    "Mark as Available" = "Mark as Available",
+    "Mark as Unavailable" = "Mark as Unavailable",
 }
 
-export type DBDoctor = Omit<Doctor, 'isAvailable' | 'id'> & { upin: Number; available: Boolean };
+export type DBDoctor = Omit<Doctor, "isAvailable" | "id"> & {
+    upin: number;
+    available: boolean;
+};
 
-export type DoctorHTML = Omit<Doctor, 'isAvailable'> & { availabilityText: AvailabilityText };
+export type DoctorHTML = Omit<Doctor, "isAvailable"> & {
+    availabilityText: AvailabilityText;
+};
