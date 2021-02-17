@@ -4,8 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { State } from "../../redux/reducers/doctorsReducer";
 import { UPDATE_TEXT_FILTER } from "../../redux/actionTypes";
 
-const doctorsReducer = ({ doctorsReducer: state }: { doctorsReducer: State }) =>
-    state.textFilter;
+export const doctorsReducer = ({
+    doctorsReducer: state,
+}: {
+    doctorsReducer: State;
+}): string => state.textFilter;
 
 const DoctorTextFilter: React.FC = () => {
     const text = useSelector(doctorsReducer);
