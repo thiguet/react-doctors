@@ -1,13 +1,17 @@
-FROM node:alpine
+FROM node:alpine as build
 
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json .
 
-COPY package.json /app/package.json
 RUN npm install 
-RUN npm install react-scripts@3.3.1 -g
 
 COPY . .
 
-CMD ["npm", "start"]
+RUN npm run build
+
+FROM httpd:alpine
+
+COPY --from=build /app/dist /usr/local/apache2/htdocs/
+
+RUN chown -R www-data:www-data /usr/local/apache2/htdocs/
