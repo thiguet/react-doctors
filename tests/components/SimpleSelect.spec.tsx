@@ -5,10 +5,7 @@ import SimpleSelect, {
     SimpleSelectProps,
 } from "../../src/components/SimpleSelect/SimpleSelect";
 
-const getFakeStringArray = () =>
-    Array(faker.random.number({ min: 0, max: 100 }))
-        .fill(null)
-        .map(() => faker.random.word());
+import { getFakeStringArray } from "../utils/stringFactory";
 
 describe("SimpleSelect", () => {
     let props: SimpleSelectProps;
