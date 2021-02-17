@@ -9,12 +9,14 @@ services:
             - ".:/app"
             - "/app/node_modules"
         ports:
-            - "8080:8080"
+            - "8080:80"
+        links:
+            - "json-server:localhost"
         environment:
             - NODE_ENV=development
     json-server:
         image: vimagick/json-server
-        command: -H 0.0.0.0 -p 3000 -w db.json --id upin
+        command: -H 0.0.0.0 -p 3030 -w db.json --id upin
         ports:
             - "3030:3030"
         volumes:
