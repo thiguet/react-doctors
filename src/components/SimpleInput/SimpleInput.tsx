@@ -13,6 +13,7 @@ const SimpleInput: FC<SimpleInputProps> = ({ label, text, setText }) => {
             <label htmlFor="search">{label}</label>
             <input
                 aria-label="search"
+                data-testid="input"
                 id="search"
                 type="text"
                 placeholder="Type here to search:"

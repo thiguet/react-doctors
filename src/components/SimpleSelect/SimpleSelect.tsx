@@ -17,6 +17,7 @@ const SimpleSelect: React.FC<SimpleSelectProps> = ({
         <select
             aria-label={ariaLabel}
             id="simple-select"
+            data-testid="select"
             value={`${filter}`}
             onChange={(evt) => {
                 const val = evt.target.value;
