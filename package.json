@@ -12,7 +12,7 @@
         "unit": "jest --config ./jest.config.ts --all",
         "unit:watch": "jest --config ./jest.config.ts --watch",
         "unit:coverage": "jest --config ./jest.config.ts --coverage",
-        "unit:dev": "jest --config ./jest.config.ts --coverage --watch",
+        "unit:dev": "jest --config ./jest.config.ts --coverage --watch --unhandled-rejections=strict ",
         "lint": "eslint src/**/*.ts src/**/*.tsx tests/**/*.tsx --fix"
     },
     "devDependencies": {
