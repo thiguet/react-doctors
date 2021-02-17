@@ -1,2 +1,6 @@
 node_modules
 coverage
+dist
+src/index.ejs
+db/data.json
+db/ids.json
